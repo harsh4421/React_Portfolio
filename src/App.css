@@ -1,0 +1,21 @@
+/* App.css */
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  height: auto;
+  overflow-x: hidden;
+  background: transparent;
+}
+
+.bg-canvas-fixed {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.portfolio-root {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}

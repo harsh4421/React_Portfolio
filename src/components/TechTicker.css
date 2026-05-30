@@ -1,0 +1,58 @@
+/* TechTicker.css */
+.ticker {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 14px 0;
+  border-top: 1px solid var(--clr-border);
+  border-bottom: 1px solid var(--clr-border);
+  background: rgba(255,255,255,0.015);
+  user-select: none;
+}
+
+/* Left / right fade masks */
+.ticker__fade {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.ticker__fade--left  { left:  0; background: linear-gradient(to right, var(--clr-bg), transparent); }
+.ticker__fade--right { right: 0; background: linear-gradient(to left,  var(--clr-bg), transparent); }
+
+/* Scrolling track */
+.ticker__track {
+  display: flex;
+  width: max-content;
+  animation: slideLeft 36s linear infinite;
+  gap: 0;
+}
+
+/* Individual item */
+.ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.ticker__item:hover { color: var(--clr-text-dim); }
+
+.ticker__dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--clr-accent);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker__track { animation: none; }
+}

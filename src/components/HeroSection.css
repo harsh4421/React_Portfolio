@@ -1,0 +1,269 @@
+/* HeroSection.css */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: var(--nav-h);
+}
+
+/* Vignette */
+.hero::before {
+  content:'';
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse 75% 65% at 50% 50%, transparent 0%, rgba(11,12,15,0.5) 70%, rgba(11,12,15,0.92) 100%);
+  pointer-events:none;
+  z-index:1;
+}
+
+/* Ambient blobs (Daksh-style) */
+.hero__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero__blob--tl {
+  top: -10%; left: -10%;
+  width: 45%; height: 45%;
+  background: rgba(0,229,204,0.07);
+}
+.hero__blob--br {
+  bottom: -10%; right: -10%;
+  width: 40%; height: 40%;
+  background: rgba(124,111,255,0.07);
+}
+
+/* HUD corners */
+.hero__hud {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.12);
+  pointer-events: none;
+  z-index: 2;
+  animation: fadeIn 1.5s ease 1.8s both;
+}
+.hero__hud--tl { top: calc(var(--nav-h) + 16px); left: var(--pad-x); }
+.hero__hud--tr { top: calc(var(--nav-h) + 16px); right: var(--pad-x); text-align: right; }
+.hero__hud--bl { bottom: 20px; left: var(--pad-x); }
+.hero__hud--br { bottom: 20px; right: var(--pad-x); text-align: right; }
+
+/* Center content */
+.hero__center {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--pad-x);
+  max-width: 940px;
+}
+
+/* Status badge */
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-text-dim);
+  margin-bottom: 2.2rem;
+  animation: blurUp 0.7s ease 0.15s both;
+  backdrop-filter: blur(8px);
+}
+
+/* Ping dot */
+.hero__ping {
+  position: relative;
+  width: 8px; height: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero__ping-core {
+  width: 7px; height: 7px;
+  background: var(--clr-accent);
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+.hero__ping-ring {
+  position: absolute;
+  inset: 0;
+  background: var(--clr-accent);
+  border-radius: 50%;
+  animation: pulse 1.8s cubic-bezier(0,0,0.2,1) infinite;
+}
+
+/* Giant name — Daksh-inspired */
+.hero__name {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  margin-bottom: 2rem;
+  user-select: none;
+}
+
+.hero__name.reveal {
+  animation: none; /* override global reveal — use blurUp below */
+}
+
+.hero__name.in {
+  opacity: 1;
+  transform: translateY(0);
+  animation: blurUp 1s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.hero__name-line {
+  display: block;
+  background: linear-gradient(135deg, #f0f2f5 40%, rgba(240,242,245,0.55));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero__name-line--offset {
+  padding-left: clamp(1.5rem, 5vw, 4rem);
+}
+
+.hero__name-accent {
+  background: linear-gradient(135deg, var(--clr-accent), var(--clr-accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Tagline */
+.hero__tagline {
+  font-size: clamp(14px, 1.6vw, 17px);
+  color: var(--clr-text-dim);
+  line-height: 1.6;
+  margin-bottom: 2.8rem;
+  max-width: 560px;
+}
+.hero__tagline.in {
+  opacity: 1;
+  transform: translateY(0);
+  animation: blurUp 0.85s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero__tagline-em {
+  color: var(--clr-text);
+  font-style: italic;
+}
+
+/* CTAs */
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+.hero__ctas.in {
+  opacity: 1;
+  transform: translateY(0);
+  animation: blurUp 0.85s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.85rem 1.8rem;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.hero__btn--fill {
+  background: var(--clr-accent);
+  color: #020503;
+}
+.hero__btn--fill:hover {
+  background: #fff;
+  box-shadow: 0 0 28px rgba(0,229,204,0.5);
+  transform: scale(1.04);
+}
+.hero__btn--fill svg { transition: transform 0.25s; }
+.hero__btn--fill:hover svg { transform: translateX(3px); }
+
+.hero__btn--ghost {
+  background: transparent;
+  color: var(--clr-text-dim);
+  border: 1px solid var(--clr-border-hi);
+}
+.hero__btn--ghost:hover {
+  color: var(--clr-text);
+  border-color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.04);
+}
+
+/* Social pill icons */
+.hero__social-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px; height: 42px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--clr-border);
+  color: var(--clr-text-dim);
+  transition: all 0.25s ease;
+}
+.hero__social-pill:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: var(--clr-border-hi);
+  color: var(--clr-text);
+  transform: translateY(-2px);
+}
+
+/* Scroll indicator — vertical line + label */
+.hero__scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeIn 1s ease 2s both;
+}
+.hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.3));
+  animation: bounce 2s ease-in-out infinite;
+}
+.hero__scroll-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+}
+
+@media (max-width: 480px) {
+  .hero__hud { display: none; }
+  .hero__name-line--offset { padding-left: 0.5rem; }
+}

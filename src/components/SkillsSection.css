@@ -1,0 +1,100 @@
+/* SkillsSection.css */
+.skills-section {
+  background: rgba(11,12,15,0.6);
+  backdrop-filter: blur(2px);
+}
+
+.sk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 1.2rem;
+  margin-top: 3rem;
+}
+
+/* Card */
+.sk-card {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s;
+}
+.sk-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--clr-border-hi);
+}
+
+/* Subtle inner glow on hover */
+.sk-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(255,255,255,0.03), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.sk-card:hover::before { opacity: 1; }
+
+/* Icon box */
+.sk-card__icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+
+.sk-card__title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--clr-text-dim);
+  margin-bottom: 0.85rem;
+  transition: color 0.25s;
+}
+.sk-card:hover .sk-card__title { color: var(--clr-text); }
+
+/* Gradient separator line (Deepanshu-inspired) */
+.sk-card__sep {
+  height: 1px;
+  width: 100%;
+  opacity: 0.2;
+  margin-bottom: 1rem;
+  border-radius: 1px;
+}
+
+/* Skill list */
+.sk-card__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sk-card__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sk-card__bullet {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sk-card__name {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--clr-text-dim);
+  transition: color 0.2s;
+}
+.sk-card:hover .sk-card__name { color: var(--clr-text); }
