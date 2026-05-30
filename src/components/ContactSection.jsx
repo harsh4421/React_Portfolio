@@ -73,8 +73,7 @@ export default function ContactSection() {
       {/* Footer */}
       <footer className="site-footer" role="contentinfo">
         <div className="site-footer__inner">
-          <span className="site-footer__name">Harsh Kumar<span style={{ color:'var(--clr-accent)' }}>.</span></span>
-          <span className="site-footer__copy">© 2024 — Designed &amp; Built with 💙</span>
+          <span className="site-footer__copy">© 2026 Harsh Kumar</span>
           <button className="site-footer__top" onClick={() => window.scrollTo({ top:0, behavior:'smooth' })} aria-label="Back to top">
             Back to top ↑
           </button>
